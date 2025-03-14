@@ -1,13 +1,79 @@
-{{! 
-Це код container файлу для index сторінки, 
+{{!
+Це код container файлу для index сторінки,
 в якому міститься код, котрий буде віддаватися по шляху (PATH) - "/"
- }}
-
-<div >
-  Hello world!
-</div>
-
-{{! 
-    Цей код містить лише те, що буде виводитись в <body>
-    Адже наш layout/default.hbs має вже структуру HTML
 }}
+<main>
+  <section>
+    <div class="form">
+      <form method="post" action="/user-create">
+        <h1 class="form__title"> Create user</h1>
+        <div class="form__field">
+          <div class="form__content">
+            <label for="email" class="form__label"> Email: </label>
+            <input type="email" name="email" class="form__input">
+          </div>
+          <div class="form__content">
+            <label for="login" class="form__label"> Login: </label>
+            <input type="login" name="login" class="form__input">
+          </div>
+          <div class="form__content">
+            <label for="password" class="form__label"> Password: </label>
+            <input type="password" name="password" class="form__input">
+          </div>
+          <div class="button__conteiner">
+            <button class="button"> Create </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </section>
+
+  <section>
+    <div class="form">
+      <h1 class="form__title"> Users List </h1>
+      <div>
+        {{#with data.users}}
+        {{#if isEmpty}}
+        <mark> Список користувачів пустий </mark>
+        {{else}}
+        <ul>
+          {{#each list}}
+          <li> {{email}} | {{login}} | {{id}} <a href="/user-delete?id={{id}}">Видалити</a></li>
+          {{/each}}
+        </ul>
+        {{/if}}
+        {{/with}}
+      </div>
+    </div>
+  </section>
+
+  <div class="form">
+    <form method="post" action="/user-update">
+      <h1 class="form__title"> Change user</h1>
+      <div class="form__field">
+        <div class="form__content">
+          <label for="id" class="form__label"> id: </label>
+          <input type="id" name="id" class="form__input">
+        </div>
+        <div class="form__content">
+          <label for="email" class="form__label"> Email: </label>
+          <input type="email" name="email" class="form__input">
+        </div>
+        <div class="form__content">
+          <label for="password" class="form__label"> Password: </label>
+          <input type="password" name="password" class="form__input">
+        </div>
+        <div class="button__conteiner">
+          <button class="button"> Change </button>
+        </div>
+      </div>
+    </form>
+  </div>
+</main>
+
+{{!
+Цей код містить лише те, що буде виводитись в
+
+<body>
+  Адже наш layout/default.hbs має вже структуру HTML
+  }}

@@ -1,0 +1,32 @@
+.form {
+    display: block;
+}
+
+.form__title {
+    font-size: 24px;
+    align-content: center;
+}
+
+.form__field {
+    display: grid;
+    gap: 20px;
+}
+
+.form__content {
+    display: grid;
+    gap: 10px;
+}
+
+.form__label {
+    font-size: 16px;
+}
+
+.form__input {
+    border-color: black;
+    border: solid;
+}
+
+.form__button {
+    border-radius: 20px;
+    
+}
